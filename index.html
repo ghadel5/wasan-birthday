@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>عيد ميلاد وسن</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="startScreen">
+    <h1>🎉 HAPPY <span style="color:#00f">BIRTHDAY</span> WASAN! 🎂</h1>
+    <p>انقر على البالونات لتفجيرها 🎈<br>عند تفجيرها جميعًا ستظهر هديتك 🎁</p>
+    <button id="startButton">ابدأ</button>
+  </div>
+
+  <p id="giftHint">🎁 اضغط على الهدية لفتحها!</p>
+  <h2 id="message">Happy Birthday Wasan! 🎉</h2>
+  <canvas id="gameCanvas"></canvas>
+
+  <button id="restartBtn" onclick="restartGame()">🔁 إعادة اللعبة</button>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="music.m4a" type="audio/mp4" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
