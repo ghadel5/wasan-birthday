@@ -55,9 +55,10 @@ canvas {
 
 #giftHint {
   display: none;
-  font-size: 16px;
+  font-size: 18px; /* كان 16 */
   color: white;
 }
+
 
 #restartBtn {
   display: none;
@@ -72,4 +73,5 @@ canvas {
   border: none;
   cursor: pointer;
 }
+
 
