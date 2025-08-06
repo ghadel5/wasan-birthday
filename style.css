@@ -35,9 +35,10 @@ canvas {
 }
 
 #startScreen p {
-  font-size: 20px; /* من 14px إلى 20px */
-  margin-bottom: 25px;
-  direction: rtl;
+    font-size: 30px;
+    margin-bottom: 25px;
+    direction: rtl;
+    text-align: center;
 }
 
 #startScreen button {
@@ -73,6 +74,7 @@ canvas {
   border: none;
   cursor: pointer;
 }
+
 
 
 
