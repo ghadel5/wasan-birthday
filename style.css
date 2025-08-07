@@ -2,17 +2,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Press Start 2P', monospace;
-  background: url("background.png") no-repeat center center;
+  background: url("background.png") no-repeat center center fixed;
   background-size: cover;
   color: white;
   text-align: center;
   overflow: hidden;
+  height: 100vh;
 }
 
 canvas {
   display: block;
-  margin: 20px auto;
-  border: 2px solid white;
+  margin: 0 auto;
   background: transparent;
 }
 
@@ -29,38 +29,37 @@ canvas {
 }
 
 #startScreen h1 {
-  font-size: 20px;
+  font-size: 28px; /* من 20px إلى 28px */
   color: #fff;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 #startScreen p {
-  font-size: 14px;
-  margin-bottom: 20px;
-  direction: rtl;
+    font-size: 30px;
+    margin-bottom: 25px;
+    direction: rtl;
+    text-align: center;
 }
 
 #startScreen button {
-  padding: 10px 20px;
-  font-size: 18px;
-  background: #111;
-  color: white;
-  border: none;
-  cursor: pointer;
+  padding: 14px 28px;
+  font-size: 22px; /* من 18px إلى 22px */
 }
 
+
 #message {
-  display: none;
-  font-size: 24px;
+  font-size: 32px; /* من 24px إلى 32px */
   color: #ffeb3b;
   text-shadow: 2px 2px #000;
 }
 
+
 #giftHint {
   display: none;
-  font-size: 16px;
+  font-size: 18px; /* كان 16 */
   color: white;
 }
+
 
 #restartBtn {
   display: none;
