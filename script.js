@@ -1,7 +1,7 @@
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 600;
-canvas.height = 400;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
 const balloonImages = {
   blue: new Image(),
@@ -19,12 +19,6 @@ const giftImage = new Image();
 giftImage.src = "gift.png";
 
 const catImage = new Image();
-catImage.onload = () => {
-  console.log("✔️ تم تحميل صورة القطة بنجاح");
-};
-catImage.onerror = () => {
-  console.error("❌ خطأ بتحميل صورة القطة");
-};
 catImage.src = "cat.gif";
 
 const popSound = new Audio("pop.mp3");
@@ -34,18 +28,24 @@ let giftOpened = false;
 
 let balloons = [];
 const colors = ["blue", "red", "green", "yellow"];
-const radius = 30;
+const radius = Math.min(window.innerWidth, window.innerHeight) * 0.04;
+const giftSize = radius * 3.3;
 
-for (let i = 0; i < 8; i++) {
-  let color = colors[i % colors.length];
-  balloons.push({
-    x: Math.random() * (canvas.width - 2 * radius) + radius,
-    y: canvas.height + Math.random() * 200,
-    color: color,
-    popped: false,
-    speed: Math.random() * 1.5 + 0.5,
-  });
+function generateBalloons() {
+  balloons = [];
+  for (let i = 0; i < 10; i++) {
+    let color = colors[i % colors.length];
+    balloons.push({
+      x: Math.random() * (canvas.width - 2 * radius) + radius,
+      y: canvas.height + Math.random() * 200,
+      color: color,
+      popped: false,
+      speed: Math.random() * 1.5 + 0.5,
+    });
+  }
 }
+
+generateBalloons();
 
 canvas.addEventListener("click", (e) => {
   const rect = canvas.getBoundingClientRect();
@@ -66,9 +66,9 @@ canvas.addEventListener("click", (e) => {
   });
 
   if (allPopped && !giftOpened) {
-    const gx = canvas.width / 2 - 50;
-    const gy = canvas.height / 2 - 50;
-    if (x > gx && x < gx + 100 && y > gy && y < gy + 100) {
+    const gx = canvas.width / 2 - giftSize / 2;
+    const gy = canvas.height / 2 - giftSize / 2;
+    if (x > gx && x < gx + giftSize && y > gy && y < gy + giftSize) {
       giftOpened = true;
       document.getElementById("message").style.display = "block";
       document.getElementById("giftHint").style.display = "none";
@@ -86,17 +86,19 @@ function draw() {
       const img = balloonImages[b.color];
       ctx.drawImage(img, b.x - radius, b.y - radius, radius * 2, radius * 2);
       b.y -= b.speed;
-      if (b.y < -radius) b.y = canvas.height + Math.random() * 100;
+      if (b.y < -radius) {
+        b.y = canvas.height + Math.random() * 100;
+        b.popped = false; // لا تجعله يختفي
+      }
     }
   });
 
   if (allPopped) {
-    ctx.drawImage(giftImage, canvas.width / 2 - 50, canvas.height / 2 - 50, 100, 100);
+    ctx.drawImage(giftImage, canvas.width / 2 - giftSize / 2, canvas.height / 2 - giftSize / 2, giftSize, giftSize);
 
     if (!giftOpened) {
       document.getElementById("giftHint").style.display = "block";
     } else {
-      // عرض 3 قطط ترقص بعد فتح الهدية
       let positions = [canvas.width / 2 - 120, canvas.width / 2 - 40, canvas.width / 2 + 40];
       positions.forEach(x => {
         let t = Date.now() / 500;
