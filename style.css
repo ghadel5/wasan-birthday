@@ -29,37 +29,38 @@ canvas {
 }
 
 #startScreen h1 {
-  font-size: 28px; /* من 20px إلى 28px */
+  font-size: 28px;
   color: #fff;
   margin-bottom: 20px;
 }
 
 #startScreen p {
-    font-size: 30px;
-    margin-bottom: 25px;
-    direction: rtl;
-    text-align: center;
+  font-size: 20px;
+  margin-bottom: 25px;
+  direction: rtl;
 }
 
 #startScreen button {
   padding: 14px 28px;
-  font-size: 22px; /* من 18px إلى 22px */
+  font-size: 22px;
+  background: #111;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-
 #message {
-  font-size: 32px; /* من 24px إلى 32px */
+  display: none;
+  font-size: 32px;
   color: #ffeb3b;
   text-shadow: 2px 2px #000;
 }
 
-
 #giftHint {
   display: none;
-  font-size: 18px; /* كان 16 */
+  font-size: 20px;
   color: white;
 }
-
 
 #restartBtn {
   display: none;
