@@ -31,21 +31,16 @@ const colors = ["blue", "red", "green", "yellow"];
 const radius = Math.min(window.innerWidth, window.innerHeight) * 0.04;
 const giftSize = radius * 3.3;
 
-function generateBalloons() {
-  balloons = [];
-  for (let i = 0; i < 10; i++) {
-    let color = colors[i % colors.length];
-    balloons.push({
-      x: Math.random() * (canvas.width - 2 * radius) + radius,
-      y: canvas.height + Math.random() * 200,
-      color: color,
-      popped: false,
-      speed: Math.random() * 1.5 + 0.5,
-    });
-  }
+for (let i = 0; i < 8; i++) {
+  let color = colors[i % colors.length];
+  balloons.push({
+    x: Math.random() * (canvas.width - 2 * radius) + radius,
+    y: canvas.height + Math.random() * 200,
+    color: color,
+    popped: false,
+    speed: Math.random() * 1.5 + 0.5,
+  });
 }
-
-generateBalloons();
 
 canvas.addEventListener("click", (e) => {
   const rect = canvas.getBoundingClientRect();
@@ -70,7 +65,7 @@ canvas.addEventListener("click", (e) => {
     const gy = canvas.height / 2 - giftSize / 2;
     if (x > gx && x < gx + giftSize && y > gy && y < gy + giftSize) {
       giftOpened = true;
-      document.getElementById("finalmessage").style.display = "block";
+      document.getElementById("message").style.display = "block";
       document.getElementById("giftHint").style.display = "none";
       document.getElementById("restartBtn").style.display = "block";
     }
@@ -86,10 +81,7 @@ function draw() {
       const img = balloonImages[b.color];
       ctx.drawImage(img, b.x - radius, b.y - radius, radius * 2, radius * 2);
       b.y -= b.speed;
-      if (b.y < -radius) {
-        b.y = canvas.height + Math.random() * 100;
-        b.popped = false; // لا تجعله يختفي
-      }
+      if (b.y < -radius) b.y = canvas.height + Math.random() * 100;
     }
   });
 
