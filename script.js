@@ -71,7 +71,7 @@ canvas.addEventListener("click", (e) => {
     if (x > gx && x < gx + giftSize && y > gy && y < gy + giftSize) {
       giftOpened = true;
       document.getElementById("finalmessage").style.display = "block";
-      document.getElementById("giftHint").style.display = "none";
+      document.getElementById("giftHint").style.display = "block";
       document.getElementById("restartBtn").style.display = "block";
     }
   }
@@ -125,4 +125,5 @@ function restartGame() {
 document.getElementById("startButton").addEventListener("click", startGame);
 
 draw();
+
 
